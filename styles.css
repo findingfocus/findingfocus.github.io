@@ -1,5 +1,6 @@
 body {  
-	background-image: url('images/website-background.jpg'); /*Image from Google blogger*/
+	/*background-image: url('images/website-background.jpg'); /*Image from Google blogger*/
+	background-image: url('images/sandiamountains3.png');
 	background-attachment: fixed;  
 	background-size: cover;
 	background-color: #31465E;
@@ -18,7 +19,9 @@ body {
 }
 
 .transparentBG {
-	background-color: rgba(10, 10, 80, .2);
+	background-color: rgba(0, 25, 100, 0.6);
+
+	/*
     position: absolute;
     background-size: cover;
 	/*
@@ -32,8 +35,9 @@ body {
 
 }
 
+
 .content {
-	background-color: rgba(0,0,0,.6);
+	background-color: rgba(0,0,0,.5);
 	color: #FFFFFF;
     text-align: left;
     margin-left: 0px;
@@ -76,6 +80,7 @@ body {
 }
 
 .navbar-toggler {
+  border: none;
   float: left;
 }
 
@@ -101,7 +106,6 @@ body {
   }
   
 }
-
 
 .btn-success {
     background-color: #43A047 !important;
