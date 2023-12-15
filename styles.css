@@ -1,6 +1,5 @@
 body {  
-	/*background-image: url('images/website-background.jpg'); /*Image from Google blogger*/
-	background-image: url('images/sandiamountains3.png');
+	background-image: url('images/sandiamountains.png'); /*Photo by Paul Thompson*/
 	background-attachment: fixed;  
 	background-size: cover;
 	background-color: #31465E;
@@ -20,19 +19,15 @@ body {
 
 .transparentBG {
 	background-color: rgba(0, 25, 100, 0.6);
-
 	/*
     position: absolute;
     background-size: cover;
-	/*
-	background-image: url('website-background.jpg'); /*Image from Google blogger
 	background-attachment: fixed;
 	background-size: cover;
 	margin-left: 0px;
 	min-height: 100vh;
     box-sizing: border-box;
-    /*opacity: 0.1;*/
-
+    opacity: 0.1;*/
 }
 
 
@@ -87,7 +82,6 @@ body {
 .navbar .navbar-nav .nav-link:hover {
   background-color: #FFFFFF;
   color: #000000;
-  /*background-image: linear-gradient(to top, #D1D1D1 0%, #FFFFFF 100%);*/
 }
 
 
