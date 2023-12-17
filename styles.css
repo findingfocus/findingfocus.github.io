@@ -1,11 +1,9 @@
 body {  
 	background-image: url('images/sandiamountains.png'); /*Photo by Paul Thompson*/
 	background-attachment: fixed;  
-	background-size: cover;
+	background-size: 100%;
 	background-color: #31465E;
-	background-position: center;
-	max-width: 1920px;
-	max-height: 1080px;
+	background-position: top;
 	font-family: Helvetica Neue;
     font-size: 1rem;
     font-weight: 400;
@@ -22,8 +20,6 @@ body {
 
 .transparentBG {
 	background-color: rgba(0, 25, 100, 0.6);
-	background-size: cover;
-	background-attachment: fixed;
 	/*
     position: absolute;
     background-size: cover;
