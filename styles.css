@@ -2,6 +2,7 @@ body {
 	background-image: url('images/sandiamountains.png'); /*Photo by Paul Thompson*/
 	background-attachment: fixed;  
 	background-size: auto 100vh;
+	display: block;
 	background-color: #31465E;
 	background-position: top center;
 	font-family: Helvetica Neue;
