@@ -20,6 +20,8 @@ body {
 
 .transparentBG {
 	background-color: rgba(0, 25, 100, 0.6);
+	background-size: cover;
+	background-attachment: fixed;
 	/*
     position: absolute;
     background-size: cover;
@@ -110,6 +112,23 @@ body {
 
 .btn-success:hover {
     background-color: #4CAF50 !important;
+}
+
+/* Fixed background for tablet and mobile */
+@media all and (max-width:1024px) {
+    selector:after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        background-position: inherit;
+        background-image: inherit;
+        background-size: inherit;
+        background-attachment: inherit;
+        background-repeat: inherit;
+        position: fixed;
+        top: 0;
+        z-index: -1;
+    }
 }
 
 
