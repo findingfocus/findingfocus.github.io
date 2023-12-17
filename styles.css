@@ -104,16 +104,6 @@ body {
   
 }
 
-.btn-success {
-    background-color: #43A047 !important;
-    margin-left: 10px !important;
-    transition: all 0.5s;
-}
-
-.btn-success:hover {
-    background-color: #4CAF50 !important;
-}
-
 /* Fixed background for tablet and mobile */
 @media all and (max-width:1024px) {
     selector:after {
@@ -129,6 +119,16 @@ body {
         top: 0;
         z-index: -1;
     }
+}
+
+.btn-success {
+    background-color: #43A047 !important;
+    margin-left: 10px !important;
+    transition: all 0.5s;
+}
+
+.btn-success:hover {
+    background-color: #4CAF50 !important;
 }
 
 
