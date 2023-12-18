@@ -37,6 +37,7 @@ body {
 
 .content {
 	background-color: rgba(0,0,0,.5);
+	background-size: cover;
 	color: #FFFFFF;
     text-align: left;
     margin-left: 0px;
