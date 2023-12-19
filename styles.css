@@ -107,11 +107,11 @@ body {
 }
 
 .btn-success:hover {
-    background-color: #4CAF50 !important;
+    background-color: #cc0000 !important;
 }
 
 .btn-danger {
-    background-color: #cc0000 !important;
+    background-color: #4CAF50 !important;
     transition: all 0.5s;
 }
 
