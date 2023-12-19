@@ -107,16 +107,16 @@ body {
 }
 
 .btn-success:hover {
-    background-color: #cc0000 !important;
+    background-color: #4CAF50 !important;
 }
 
 .btn-danger {
-    background-color: #4CAF50 !important;
+    background-color: #cc0000 !important;
     transition: all 0.5s;
 }
 
 .btn-danger:hover {
-    background-color: #ff0000 !important;
+    background-color: #ee0000 !important;
 }
 
 
