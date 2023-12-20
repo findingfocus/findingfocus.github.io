@@ -5,7 +5,7 @@ body {
 	background-color: #31465E;
 	background-repeat: no-repeat;
 	background-position: top center;
-	font-family: Helvetica Neue;
+	font-family: Arial;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
@@ -36,15 +36,17 @@ body {
 
 
 .content {
-	background-color: rgba(0,0,0,.5);
+	background-color: rgba(0,0,0,.4);
 	color: #FFFFFF;
     text-align: left;
     margin-left: 0px;
     margin-right: 0px;
     font-size: 20px;
-    font-family: Helvetica Neue;
+    font-family: Arial;
     line-height: 1.5;
-}
+    min-height: 100vh;
+    overflow: hidden;
+ }
 
 .buttonFormatting {
     text-align: left;
@@ -68,7 +70,7 @@ body {
 	line-height: 1;
     font-size: 1.1em;
     /*font-family: Segoe UI;*/
-    font-family: Helvetica Neue;
+    font-family: Arial;
     padding: 0.5em 0.8em;
     transition: all 0.7s;
 }
@@ -117,6 +119,11 @@ body {
 
 .btn-danger:hover {
     background-color: #ee0000 !important;
+}
+
+.video-margin {
+	margin-left: 40px;
+	margin-right: 40px;"
 }
 
 
