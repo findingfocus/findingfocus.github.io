@@ -41,32 +41,61 @@
 	        <div class ="content">
 	        	<div style="margin-left:20px; margin-right:20px;">
 	        		<br>
-		          	<h3><b><u>Programming</b></u></h3>
-                    Javascript test for bitrate application
+		          	<h3><b><u>Bitrate Calculator</b></u></h3>
+                    Enter the duration and filesize of a video and calculate it's bitrate with this web application.
                     <script>
                         document.addEventListener('DOMContentLoaded', function() {
-                            let hours  = document.querySelectorAll('.hours');
-                            document.querySelector('#hourInput').innerHTML = 'test'
+                            document.querySelector('#check').addEventListener('click', function() {
+                                let hourString = "Hours ";
+                                let minuteString = "Minutes ";
+                                let secondString = "Seconds ";
+                                let filesizeString = "Filesize ";
+                                document.querySelector('#hourI').innerHTML = hourString.concat(hourInput.value); 
+                                document.querySelector('#minuteI').innerHTML = minuteString.concat(minuteInput.value); 
+                                document.querySelector('#secondI').innerHTML = secondString.concat(secondInput.value); 
+                                document.querySelector('#filesizeI').innerHTML = filesizeString.concat(filesizeInput.value); 
+                                event.preventDefault();
+                            });
                         });
                     </script>    
-                    <div class="hours">
-                        <label>Enter Hours: </label> 
-                        <input type="number" id="hourInput" min="0" max="100"/>
+                    <div id="duration" style="margin-top: 5px;">
+                        <label>Hours</label> 
+                        <input type="number" id="hourInput" min="0" max="100" value="0" style="width: 60px">
+                        <label>Minutes</label> 
+                        <input type="number" id="minuteInput" min="0" max="60" value="0" style="width: 60px">
+                        <label>Seconds</label> 
+                        <input type="number" id="secondInput" min="0" max="60" value="0" style="width: 60px">
                     </div>
-					<ul>
-						<li> Thing </li>
-						<li> Thing </li>
-						<li> Thing </li>
-						<li> Thing </li>
-						<li> Thing </li>
-						<li> Thing </li>
-						<li> Thing </li>
-						<li> Thing </li>
-						<li> Thing </li>
-						<li> Thing </li>
-						<li> Thing </li>
-					</ul>
+                    <div>
+                        <label>Filesize (megabytes)</label>
+                        <input type="number" id="filesizeInput" min="0" max="20000" value="0" style="width: 100px; margin-top: 10px;">
+                        <button id="check">Calculate Bitrate</button>
+                    </div>
+
+                    <div id="hourI">
+                    </div>
+                    
+                    <div id="minuteI">
+                    </div>
+                        
+                    <div id="secondI">
+                    </div>
+
+                    <div id="filesizeI">
+                    </div>
 		        </div>
+            <br>
+            <br>
+
+            <div style="margin-left:20px; margin-right:20px;">
+                <br>
+                <h3><b><u>Education and Certifications</b></u></h3>
+                <div class="text-center">
+                    <img src="images/CS50xCertificate.png" class="img-fluid" alt="edX verified certificate CS50x">
+                </div>
+            </div>
+            <br>
+            <br>
 	        </div>
 	    </main>
     </body>
