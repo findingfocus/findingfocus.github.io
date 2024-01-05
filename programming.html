@@ -42,7 +42,7 @@
 	        	<div style="margin-left:20px; margin-right:20px;">
 	        		<br>
 		          	<h3><b><u>Bitrate Calculator</b></u></h3>
-                    Enter the duration and filesize of a video and calculate it's bitrate with this web application.
+                    Enter the duration and filesize of a video to calculate its bitrate with this web application.
                     <script>
                         document.addEventListener('DOMContentLoaded', function() {
                             document.querySelector('#check').addEventListener('click', function() {
@@ -70,14 +70,14 @@
                     </script>    
                     <div id="duration" style="margin-top: 5px;">
                         <label>Hours</label> 
-                        <input type="number" autocomplete="off" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)" id="hourInput" min="0" max="100" value="0" maxlength="2" style="width: 60px">
+                        <input type="number" autocomplete="off" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)" id="hourInput" min="0" max="99" value="" maxlength="2" style="width: 60px">
                         <label>Minutes</label> 
-                        <input type="number" autocomplete="off" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)" id="minuteInput" min="0" max="60" value="0" maxlength="2" style="width: 60px">
+                        <input type="number" autocomplete="off" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)" id="minuteInput" min="0" max="60" value="" maxlength="2" style="width: 60px">
                         <label>Seconds</label> 
-                        <input type="number" autocomplete="off" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)" id="secondInput" min="0" max="60" value="0" maxlength="2" style="width: 60px; margin-top:5px;">
+                        <input type="number" autocomplete="off" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)" id="secondInput" min="0" max="60" value="" maxlength="2" style="width: 60px; margin-top:5px;">
                         <br>
                         <label>Filesize (megabytes)</label>
-                        <input type="number" autocomplete="off" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)" id="filesizeInput" min="0" max="20000" maxlength="5" value="0" style="width: 100px; margin-top: 10px;">
+                        <input type="number" autocomplete="off" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)" id="filesizeInput" min="0" max="999999" maxlength="6" value="" style="width: 100px; margin-top: 10px;">
                         <button id="check">Calculate Bitrate</button>
                         <script>
                             function maxLengthCheck(object) {
