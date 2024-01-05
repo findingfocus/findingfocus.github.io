@@ -105,11 +105,13 @@ body {
 .btn-success {
     background-color: #43A047 !important;
     margin-left: 10px !important;
+    border-color: #48b04d;
     transition: all 0.5s;
 }
 
 .btn-success:hover {
     background-color: #4CAF50 !important;
+    border-color: #429645;
 }
 
 .btn-danger {
@@ -121,6 +123,16 @@ body {
     background-color: #ee0000 !important;
 }
 
+.btn-primary {
+    background-color: #325A80 !important;
+    transition: all 0.5s;
+    border-color: #34618c;
+}
+
+.btn-primary:hover {
+    background-color: #3a6894 !important;
+    border-color: #2e577d;
+}
 .video-margin {
 	margin-left: 40px;
 	margin-right: 40px;"

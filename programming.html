@@ -78,7 +78,7 @@
                         <br>
                         <label>Filesize (megabytes)</label>
                         <input type="number" autocomplete="off" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)" id="filesizeInput" min="0" max="999999" maxlength="6" value="" style="width: 100px; margin-top: 10px;">
-                        <button id="check">Calculate Bitrate</button>
+						<a class="btn btn-primary bg-gradient" id="check" role="button">Calculate Bitrate</a>
                         <script>
                             function maxLengthCheck(object) {
                                 if (object.value.length > object.maxLength)
