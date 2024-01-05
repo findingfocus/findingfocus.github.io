@@ -49,27 +49,53 @@
                                 let hourString = "Hours ";
                                 let minuteString = "Minutes ";
                                 let secondString = "Seconds ";
-                                let filesizeString = "Filesize ";
-                                document.querySelector('#hourI').innerHTML = hourString.concat(hourInput.value); 
-                                document.querySelector('#minuteI').innerHTML = minuteString.concat(minuteInput.value); 
-                                document.querySelector('#secondI').innerHTML = secondString.concat(secondInput.value); 
-                                document.querySelector('#filesizeI').innerHTML = filesizeString.concat(filesizeInput.value); 
+                                let filesizeString = "Bitrate is about: ";
+                                let hours = hourInput.value;
+                                let minutes = minuteInput.value;
+                                let seconds = secondInput.value;
+                                let totalSeconds = (hours * 3600) + (minutes * 60) + (seconds * 1); 
+                                let megabits = filesizeInput.value * 8;
+                                let answer = megabits / totalSeconds;
+                                answer = answer.toFixed(2);
+                                if (isNaN(answer)) {
+                                    answer = Number(0);
+                                }
+                                //document.querySelector('#hourI').innerHTML = hourString.concat(hourInput.value); 
+                                //document.querySelector('#minuteI').innerHTML = minuteString.concat(minuteInput.value); 
+                                //document.querySelector('#secondI').innerHTML = secondString.concat(secondInput.value); 
+                                document.querySelector('#filesizeI').innerHTML = filesizeString.concat(answer, "Mbps"); 
                                 event.preventDefault();
                             });
                         });
                     </script>    
                     <div id="duration" style="margin-top: 5px;">
                         <label>Hours</label> 
-                        <input type="number" id="hourInput" min="0" max="100" value="0" style="width: 60px">
+                        <input type="number" autocomplete="off" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)" id="hourInput" min="0" max="100" value="0" maxlength="2" style="width: 60px">
                         <label>Minutes</label> 
-                        <input type="number" id="minuteInput" min="0" max="60" value="0" style="width: 60px">
+                        <input type="number" autocomplete="off" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)" id="minuteInput" min="0" max="60" value="0" maxlength="2" style="width: 60px">
                         <label>Seconds</label> 
-                        <input type="number" id="secondInput" min="0" max="60" value="0" style="width: 60px">
-                    </div>
-                    <div>
+                        <input type="number" autocomplete="off" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)" id="secondInput" min="0" max="60" value="0" maxlength="2" style="width: 60px; margin-top:5px;">
+                        <br>
                         <label>Filesize (megabytes)</label>
-                        <input type="number" id="filesizeInput" min="0" max="20000" value="0" style="width: 100px; margin-top: 10px;">
+                        <input type="number" autocomplete="off" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)" id="filesizeInput" min="0" max="20000" maxlength="5" value="0" style="width: 100px; margin-top: 10px;">
                         <button id="check">Calculate Bitrate</button>
+                        <script>
+                            function maxLengthCheck(object) {
+                                if (object.value.length > object.maxLength)
+                                    object.value = object.value.slice(0, object.maxLength)
+                            }
+
+                            function isNumeric (evt) {
+                                var theEvent = evt || window.event;
+                                var key = theEvent.keyCode || theEvent.which;
+                                key = String.fromCharCode (key);
+                                var regex = /[0-9]|\./;
+                                if ( !regex.test(key) ) {
+                                    theEvent.returnValue = false;
+                                    if(theEvent.preventDefault) theEvent.preventDefault();
+                                }
+                            }
+                        </script>
                     </div>
 
                     <div id="hourI">
@@ -81,8 +107,10 @@
                     <div id="secondI">
                     </div>
 
-                    <div id="filesizeI">
-                    </div>
+                    <u>
+                        <div id="filesizeI" style="margin-top: 15px;">
+                        </div>
+                    </u>
 		        </div>
             <br>
             <br>
@@ -91,7 +119,9 @@
                 <br>
                 <h3><b><u>Education and Certifications</b></u></h3>
                 <div class="text-center">
-                    <img src="images/CS50xCertificate.png" class="img-fluid" alt="edX verified certificate CS50x">
+                    <a href="https://courses.edx.org/certificates/eb843c36ff1d4bd5bfde1bbfdb9925b3">
+                        <img src="images/CS50xCertificate.png" class="img-fluid" alt="edX verified certificate CS50x">
+                    </a>
                 </div>
             </div>
             <br>
