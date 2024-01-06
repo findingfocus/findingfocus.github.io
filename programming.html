@@ -8,6 +8,7 @@
         <link rel="icon" type="image/x-icon" href="images/findingfocusfavicon.png">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
         <link href="styles.css" rel="stylesheet">
+        <link href="prism.css" rel="stylesheet">
         <title>Programming</title>
     </head>
     <body>
@@ -113,20 +114,192 @@
                     </u>
 		        </div>
             <br>
-            <br>
 
             <div style="margin-left:20px; margin-right:20px;">
-                <br>
-                <h3><b><u>Education and Certifications</b></u></h3>
-                <div class="text-center">
-                    <a href="https://courses.edx.org/certificates/eb843c36ff1d4bd5bfde1bbfdb9925b3">
-                        <img src="images/CS50xCertificate.png" class="img-fluid" alt="edX verified certificate CS50x">
-                    </a>
-                </div>
-            </div>
-            <br>
-            <br>
-	        </div>
+                <h3><b><u>Python Programming</b></u></h3>
+                <div class="box" style="margin-left:20px; margin-right:20px;">
+                    <pre>
+                    <code class="language-py">
+# This app converts inputs to appropriate metadata for DIAD podcasts
+
+#Itunes and Filename variables
+episode_number = str(input(f'Episode Number: '))
+episode_title = input(f'Episode Title: ')
+episode_description = input(f'Episode Description: ')
+podcast_title = 'The Do It And Die Podcast: Pitching and Developing Sketch Comedy'
+podcast_description = 'A humorous podcast in which sketch comedy ideas are pitched and developed. Paul, Evan, ' \
+                     'and Brett bring their minds together in order to come up with the next video idea that ' \
+                     'they will film and put on their youtube channel, DoItAndDie.'
+itunes_title = f'DIAD #{episode_number}: {episode_title}'
+itunes_artist = 'Do It And Die Sketch Comedy'
+mp3_titles = episode_title.split()
+output =''
+count = 1
+for mp3_title in mp3_titles:
+    if count < len(mp3_titles):
+        count += 1
+        output += mp3_title + '-'
+    else:
+        output += mp3_title
+itunes_filename = f'DIAD{episode_number}_{output}.mp3'
+
+#Libsyn variables
+libsyn_tags = ('sketch comedy, sketch comedy podcast, writing comedy, pitching comedy, developing comedy')
+libsyn_description = f'''<p>{episode_description}</p>
+<p>Please check out our <a href="https://www.youtube.com/user/DoItAndDie">YouTube Channel</a></p>
+<p>And <a href="https://www.youtube.com/user/DoItAndDie?sub_confirmation=1">subscribe here!</a></p>
+<p><a href="http://www.doitanddie.com/">Website</a></p>'''
+
+#Youtube variables
+youtube_tags = '''sketch comedy,  developing sketch comedy, 
+comedy sketches'''
+
+#Functions presenting appropriate metadata for DIAD files
+def itunes_metadata():
+    return "Itunes Metadata---\n" + "Song: " + itunes_title + "\nArtist: " + itunes_artist + "\nAlbum: "\
++ podcast_title + "\nComments: " + episode_description + '\nFilename: ' + itunes_filename +'\n'
+
+def libsyn_metadata():
+    return "\nLibsyn Metadata---" + "\nTitle: " + itunes_title + "\nSubtitle: " + podcast_description + "\nDescription: "\
++ libsyn_description + "\nTags: " + libsyn_tags + "\nItunes Optimization---" + "\nTitle: " + itunes_title + '\nSummary: '\
++ episode_description +'\n'
+
+def youtube_metadata():
+    return "\nYouTube Metadata---" + f'\nTitle: DIAD Sketch Comedy #{episode_number}: {episode_title}' + '\nDescription: '\
++ episode_description + f'''\n\nWant to learn to write sketch comedy? Listen to our sketch comedy podcast, we talk and 
+develop sketch comedy ideas including parodies and shorts.
+
+Please subscribe here if you enjoyed!
+https://www.youtube.com/user/DoItAndDie?sub_confirmation=1
+
+download this podcast directly from our Libsyn page:
+http://traffic.libsyn.com/doitanddie/{itunes_filename}
+
+Check out our website with the whole sketch comedy writing podcast feed:
+doitanddie.com\n''' + '\nTags: ' + f'{youtube_tags}'
+
+# Writes to 'PodcastMetadata.txt' file alongside this app directory
+f = open('PodcastMetadata.txt', 'w')
+f.write(itunes_metadata())
+f.write(libsyn_metadata())
+f.write(youtube_metadata())
+f.close()
+
+print("\nPodcastMetadata.txt' has been exported alongside this application.\n")
+index_id = input('Index ID from Libsyn (8 digits):')
+
+#Blogger embed will present the embedded libsyn media player with a DIAD Dark Red Color Theme
+def blogger_embed():
+    return '\n\nBlogger Embed Code---\n<iframe style="border: none" src="//html5-player.libsyn.com/embed/episode/id/'\
+            f'{index_id.strip()}/height/90/theme/custom/thumbnail/yes/direction/backward/render-playlist/no/'\
+            'custom-color/c60613/" height="90" width="100%" scrolling="no"  allowfullscreen webkitallowfullscreen'\
+            ' mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>'
+
+
+f = open('PodcastMetadata.txt', 'a')
+f.write(blogger_embed())
+f.close()
+                    </code>
+                    </pre>
+                    <br>
+                    <h3><b><u>Sonic Pi Programming</b></u></h3>
+                    <pre>
+                    <code class="language-python">
+# Music for my programming streams
+with_fx :reverb do
+  live_loop :kick do
+    sample :drum_heavy_kick, rate: 0.5, amp: 0.5
+    sleep 8
+  end
+ 
+  live_loop :hihats do
+    sample :drum_tom_hi_soft, rate: 1, amp: 0.3
+    sleep 1
+  end
+ 
+  live_loop :guitar do
+    sample :guit_em9, rate: 0.5, amp: 0.3
+    sleep 16
+  end
+end
+
+use_synth :hollow
+with_fx :reverb, mix: 1 do
+ 
+  live_loop :note1 do
+    play choose([:E4,:B5]), attack: 6, release: 6
+    sleep 8
+  end
+ 
+  live_loop :note2 do
+    play choose([:G4,:D5]), attack: 4, release: 5
+    sleep 10
+  end
+ 
+  live_loop :note3 do
+    play choose([:A5, :Fs4]), attack: 5, release: 5
+    sleep 11
+  end
+end
+                    </code>
+                    </pre>
+
+                    </code>
+                    </pre>
+                    <br>
+                    <h3><b><u>Artist's Prayer in C</b></u></h3>
+                    <pre>
+                    <code class="language-c">
+#include <stdio.h>
+#define LINES 25
+
+const char *Prayer[LINES];
+
+int main()
+{
+	printf("%s\n", Prayer[0]);
+	char input;
+	for (int i = 1; i < LINES; i++)
+	{
+		scanf("%c", &input);
+		if (input == 10)
+		{
+			printf("%s\n", Prayer[i]);
+		}
+	}
+}
+
+const char *Prayer[] = {
+"O Great Muse",
+"Gift us with your presence",
+"And we shall commit to the work of showing up",
+"Let us handle the quantity, and you handle the quality",
+"Help us love ourselves so we can love others",
+"Help us grow so we can help others grow",
+"Please alert us when we are on the wrong path",
+"By showing us interesting new directions to follow",
+"Let us not get wrapped up in the end product, but in the process itself",
+"Help us love the present and work out of it not for an imaginary future",
+"But to make art for its own sake and its own beauty",
+"Grant us the courage to try, and the confidence for having done so",
+"Help us unite with other creators so we can encourage each other",
+"If we are depressed, help us cling to what is beautiful in the moment",
+"And help nudge us towards contentment even in difficult times",
+"We promise to offer our work to you consistently",
+"And we will listen to where our hearts tell us to go",
+"We dedicate our creations to you and they do not belong to us",
+"For we were only gifted the idea through the ether",
+"And we are merely forging it and returning it to the universe",
+"Allow us to realize we all deserve love",
+"And that we are all the same divine light",
+"We cannot be alone when we realize this",
+"We create in honor of each other's divinity",
+"Please accept our gifts as they are only made possible through your grace"
+};	  
+                    </code>
+                    </pre>
+
 	    </main>
+        <script src="prism.js"></script>
     </body>
 </html>
