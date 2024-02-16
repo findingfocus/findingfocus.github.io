@@ -111,6 +111,19 @@ body {
     background-color: #ee0000 !important;
 }
 
+.btn-info {
+	color: #FFFFFF;
+	background-color: #6441a5 !important;
+    transition: all 0.5s;
+    border-color: #6441a5;
+}
+
+.btn-info:hover {
+	color: #FFFFFF;
+	background-color: #8c5ce6 !important;
+	border-color: #6441a5;
+}
+
 .btn-primary {
     background-color: #325A80 !important;
     transition: all 0.5s;
