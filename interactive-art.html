@@ -66,7 +66,7 @@
 				};
 				var Fail = function(m)
 				{
-					canvas.outerHTML = '<div style="max-width:90%;width:'+canvas.clientWidth+'px;height:'+canvas.clientHeight+'px;background:#000;display:table-cell;vertical-align:middle"><div style="background-color:#FFF;color:#000;padding:1.5em;max-width:400px;width:80%;margin:auto;text-align:center">'+TXT.NOWEBGL+(m?'<br><br>'+m:'')+'</div></div>';
+					DoSetup();
 				};
 				var DoExecute = function()
 				{
@@ -116,9 +116,14 @@
 				ctx.textAlign = 'center';
 				DoSetup();
 				})()</script>
+
                 <div class="text-center" style="margin-top:25px;">
                     Source Code:<a class="btn btn-success bg-gradient" href="https://github.com/findingfocus/weather/" role="button">Weather</a>
                 </div>
+
+
+
+
 
 
 
@@ -144,7 +149,7 @@
 				};
 				var Fail = function(m)
 				{
-					canvas.outerHTML = '<div style="max-width:90%;width:'+canvas.clientWidth+'px;height:'+canvas.clientHeight+'px;background:#000;display:table-cell;vertical-align:middle"><div style="background-color:#FFF;color:#000;padding:1.5em;max-width:400px;width:80%;margin:auto;text-align:center">'+TXT.NOWEBGL+(m?'<br><br>'+m:'')+'</div></div>';
+					DoSetup();
 				};
 				var DoExecute = function()
 				{
