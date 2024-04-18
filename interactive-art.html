@@ -45,7 +45,7 @@
 	        		<b>Controls:</b> Use WASD on keyboard, or on mobile devices tap the very edges of the game's canvas to move the character
 	        	</div>
 	        	<div>
-	        		<center><canvas id="canvas" width="500" height="500" style="max-width:100%;background:#000;vertical-align:middle; margin-top: 20px;"></canvas></center>
+	        		<center><canvas id="canvas1" width="500" height="500" style="max-width:100%;background:#000;vertical-align:middle; margin-top: 20px;"></canvas></center>
 	        	</div>
 				<script type="text/javascript">(function(){
 				var TXT =
@@ -55,8 +55,9 @@
 					EXECUTE: 'Starting Game',
 					DLERROR: 'Error while downloading game data.\nCheck your internet connection.',
 					NOWEBGL: 'Your browser or graphics card does not seem to support <a href="http://khronos.org/webgl/wiki/Getting_a_WebGL_Implementation">WebGL</a>.<br>Find out how to get it <a href="http://get.webgl.org/">here</a>.',
+					TEST: 'WE PUT TEST HERE',
 				};
-				var canvas = document.getElementById('canvas'), ctx;
+				var canvas = document.getElementById('canvas1'), ctx;
 				var Msg = function(m)
 				{
 					ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -66,7 +67,6 @@
 				};
 				var Fail = function(m)
 				{
-					DoSetup();
 				};
 				var DoExecute = function()
 				{
@@ -120,11 +120,9 @@
                 <div class="text-center" style="margin-top:25px;">
                     Source Code:<a class="btn btn-success bg-gradient" href="https://github.com/findingfocus/weather/" role="button">Weather</a>
                 </div>
-
-
-
-
-
+                    <div class="text-center" style="margin-top:25px;">
+                        <a class="btn btn-primary bg-gradient" onClick="window.location.reload()" role="button">Reload Games</a>
+                    </div>
 
 
 				<div>
@@ -138,6 +136,8 @@
 					EXECUTE: 'Starting Game',
 					DLERROR: 'Error while downloading game data.\nCheck your internet connection.',
 					NOWEBGL: 'Your browser or graphics card does not seem to support <a href="http://khronos.org/webgl/wiki/Getting_a_WebGL_Implementation">WebGL</a>.<br>Find out how to get it <a href="http://get.webgl.org/">here</a>.',
+					TEST: 'WE PUT TEST HERE',
+
 				};
 				var canvas = document.getElementById('canvas2'), ctx;
 				var Msg = function(m)
@@ -149,7 +149,7 @@
 				};
 				var Fail = function(m)
 				{
-					DoSetup();
+
 				};
 				var DoExecute = function()
 				{
@@ -172,7 +172,7 @@
 					window.onerror = function(e,u,l) { Fail(e+'<br>('+u+':'+l+')'); };
 					Module = { TOTAL_MEMORY: 1024*1024*24, TOTAL_STACK: 1024*1024*2, currentScriptUrl: '-', preInit: DoExecute };
 					var s = document.createElement('script'), d = document.documentElement;
-					s.src = 'Weather2.js';
+					s.src = 'weatherb.js';
 					s.async = true;
 					s.onerror = function(e) { d.removeChild(s); Msg(TXT.DLERROR); canvas.disabled = false; };
 					d.appendChild(s);
