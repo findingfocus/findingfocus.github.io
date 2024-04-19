@@ -1,5 +1,5 @@
 (function(){
-  var TXT =
+  let TXT =
     {
       PLAYBTN: 'Click here to play WEATHER',
       LOAD:    'Downloading Game',
@@ -9,19 +9,19 @@
       TEST: 'WE PUT TEST HERE',
 
     };
-  var canvas = document.getElementById('canvas2'), ctx;
-  var Msg = function(m)
+  let canvas = document.getElementById('canvas2'), ctx;
+  let Msg = function(m)
   {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = '#888';
-    for (var i = 0, a = m.split('\n'), n = a.length; i != n; i++)
+    for (let i = 0, a = m.split('\n'), n = a.length; i != n; i++)
       ctx.fillText(a[i], canvas.width/2, canvas.height/2-(n-1)*20+10+i*40);
   };
-  var Fail = function(m)
+  let Fail = function(m)
   {
 
   };
-  var DoExecute = function()
+  let DoExecute = function()
   {
     Msg(TXT.EXECUTE);
     Module.canvas = canvas.cloneNode(false);
@@ -36,18 +36,18 @@
     };
     setTimeout(function() { Module.run(['/p']); }, 50);
   };
-  var DoLoad = function()
+  let DoLoad = function()
   {
     Msg(TXT.LOAD);
     window.onerror = function(e,u,l) { Fail(e+'<br>('+u+':'+l+')'); };
     Module = { TOTAL_MEMORY: 1024*1024*24, TOTAL_STACK: 1024*1024*2, currentScriptUrl: '-', preInit: DoExecute };
-    var s = document.createElement('script'), d = document.documentElement;
+    let s = document.createElement('script'), d = document.documentElement;
     s.src = 'weatherb.js';
     s.async = true;
     s.onerror = function(e) { d.removeChild(s); Msg(TXT.DLERROR); canvas.disabled = false; };
     d.appendChild(s);
   };
-  var DoSetup = function()
+  let DoSetup = function()
   {
     canvas.onclick = function()
     {
