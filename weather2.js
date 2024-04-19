@@ -6,8 +6,7 @@
       EXECUTE: 'Starting Game',
       DLERROR: 'Error while downloading game data.\nCheck your internet connection.',
       NOWEBGL: 'Your browser or graphics card does not seem to support <a href="http://khronos.org/webgl/wiki/Getting_a_WebGL_Implementation">WebGL</a>.<br>Find out how to get it <a href="http://get.webgl.org/">here</a>.',
-      TEST: 'WE PUT TEST HERE',
-
+      TEST: 'If game is stuck loading:\nClick "reload" button',
     };
   let canvas = document.getElementById('canvas2'), ctx;
   let Msg = function(m)
@@ -19,7 +18,7 @@
   };
   let Fail = function(m)
   {
-
+    Msg(TXT.TEST);
   };
   let DoExecute = function()
   {
