@@ -120,85 +120,104 @@
                 <div class="box" style="margin-left:20px; margin-right:20px;">
                     <pre style="font-size: 16px">
                     <code class="language-py">
-# This app converts inputs to appropriate metadata for DIAD podcasts
+# This app generates .docx files and zips them for video deposition preparation
 
-#Itunes and Filename variables
-episode_number = str(input(f'Episode Number: '))
-episode_title = input(f'Episode Title: ')
-episode_description = input(f'Episode Description: ')
-podcast_title = 'The Do It And Die Podcast: Pitching and Developing Sketch Comedy'
-podcast_description = 'A humorous podcast in which sketch comedy ideas are pitched and developed. Paul, Evan, ' \
-                     'and Brett bring their minds together in order to come up with the next video idea that ' \
-                     'they will film and put on their youtube channel, DoItAndDie.'
-itunes_title = f'DIAD #{episode_number}: {episode_title}'
-itunes_artist = 'Do It And Die Sketch Comedy'
-mp3_titles = episode_title.split()
-output =''
-count = 1
-for mp3_title in mp3_titles:
-    if count < len(mp3_titles):
-        count += 1
-        output += mp3_title + '-'
-    else:
-        output += mp3_title
-itunes_filename = f'DIAD{episode_number}_{output}.mp3'
+# Currently deployed to the web at findingfocus.productions
 
-#Libsyn variables
-libsyn_tags = ('sketch comedy, sketch comedy podcast, writing comedy, pitching comedy, developing comedy')
-libsyn_description = f'''<p>{episode_description}</p>
-<p>Please check out our <a href="https://www.youtube.com/user/DoItAndDie">YouTube Channel</a></p>
-<p>And <a href="https://www.youtube.com/user/DoItAndDie?sub_confirmation=1">subscribe here!</a></p>
-<p><a href="http://www.doitanddie.com/">Website</a></p>'''
+from docxtpl import DocxTemplate
+import os
+import zipfile
+from datetime import datetime
+import shutil
 
-#Youtube variables
-youtube_tags = '''sketch comedy,  developing sketch comedy, 
-comedy sketches'''
+OUTPUT_FOLDER = "Output"
 
-#Functions presenting appropriate metadata for DIAD files
-def itunes_metadata():
-    return "Itunes Metadata---\n" + "Song: " + itunes_title + "\nArtist: " + itunes_artist + "\nAlbum: "\
-+ podcast_title + "\nComments: " + episode_description + '\nFilename: ' + itunes_filename +'\n'
+def clear_output_folder(folder_path):
+    for filename in os.listdir(folder_path):
+        file_path = os.path.join(folder_path, filename)
+        try:
+            if os.path.isfile(file_path) or os.path.islink(file_path):
+                os.unlink(file_path)
+            elif os.path.isdir(file_path):
+                shutil.rmtree(file_path)
+        except Exception as e:
+            print(f'Failed to delete {file_path}. Reason: {e}')
 
-def libsyn_metadata():
-    return "\nLibsyn Metadata---" + "\nTitle: " + itunes_title + "\nSubtitle: " + podcast_description + "\nDescription: "\
-+ libsyn_description + "\nTags: " + libsyn_tags + "\nItunes Optimization---" + "\nTitle: " + itunes_title + '\nSummary: '\
-+ episode_description +'\n'
+def perform_task(year, videographer, month_str, day, start_time, deponent, case_name, plaintiff_attorney, defense_attorney):
+    # Convert month to integer and validate
+    try:
+        month = int(month_str)
+        if month < 1 or month > 12:
+            raise ValueError("Month must be between 1 and 12.")
+    except ValueError as e:
+        return str(e), None
 
-def youtube_metadata():
-    return "\nYouTube Metadata---" + f'\nTitle: DIAD Sketch Comedy #{episode_number}: {episode_title}' + '\nDescription: '\
-+ episode_description + f'''\n\nWant to learn to write sketch comedy? Listen to our sketch comedy podcast, we talk and 
-develop sketch comedy ideas including parodies and shorts.
+    month_text = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][month - 1]
 
-Please subscribe here if you enjoyed!
-https://www.youtube.com/user/DoItAndDie?sub_confirmation=1
+    def get_day_suffix(day):
+        if 10 <= day <= 20:
+            return 'th'
+        last_digit = day % 10
+        return {1: 'st', 2: 'nd', 3: 'rd'}.get(last_digit, 'th')
 
-download this podcast directly from our Libsyn page:
-http://traffic.libsyn.com/doitanddie/{itunes_filename}
+    try:
+        day = int(day)
+        if day < 1 or day > 31:
+            raise ValueError("Day must be between 1 and 31.")
+    except ValueError as e:
+        return str(e), None
 
-Check out our website with the whole sketch comedy writing podcast feed:
-doitanddie.com\n''' + '\nTags: ' + f'{youtube_tags}'
+    day_suffix = get_day_suffix(day)
 
-# Writes to 'PodcastMetadata.txt' file alongside this app directory
-f = open('PodcastMetadata.txt', 'w')
-f.write(itunes_metadata())
-f.write(libsyn_metadata())
-f.write(youtube_metadata())
-f.close()
+    # Clear the output folder before generating new files
+    clear_output_folder(OUTPUT_FOLDER)
 
-print("\nPodcastMetadata.txt' has been exported alongside this application.\n")
-index_id = input('Index ID from Libsyn (8 digits):')
+    # Define file paths
+    date_str = f"{year}-{month:02}-{day:02}"
+    readon_path = f"{OUTPUT_FOLDER}/READON {deponent} {month}-{day}-{year}.docx"
+    videolog_path = f"{OUTPUT_FOLDER}/{deponent} {month}-{day}-{year}.docx"
+    zip_filename = f"{OUTPUT_FOLDER}/{date_str} {deponent} Video Worksheets.zip"
 
-#Blogger embed will present the embedded libsyn media player with a DIAD Dark Red Color Theme
-def blogger_embed():
-    return '\n\nBlogger Embed Code---\n<iframe style="border: none" src="//html5-player.libsyn.com/embed/episode/id/'\
-            f'{index_id.strip()}/height/90/theme/custom/thumbnail/yes/direction/backward/render-playlist/no/'\
-            'custom-color/c60613/" height="90" width="100%" scrolling="no"  allowfullscreen webkitallowfullscreen'\
-            ' mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>'
+    # Create Output directory if it doesn't exist
+    os.makedirs(os.path.dirname(readon_path), exist_ok=True)
 
+    # Create and save .docx files
+    try:
+        subject_line = f"{month}-{day}-{year} {deponent} Deposition"
+        
+        doc = DocxTemplate("readonTemplate.docx")  
+        context = {
+            'year': year,
+            'videographer': videographer,
+            'month': month_text,
+            'day': day,
+            'suffix': day_suffix,
+            'start_time': start_time,
+            'deponent': deponent,
+            'case_name': case_name,
+            'plaintiff_attorney': plaintiff_attorney,
+            'defense_attorney': defense_attorney,
+            'subject_line': subject_line
+        }
+        doc.render(context)
+        doc.save(readon_path)
 
-f = open('PodcastMetadata.txt', 'a')
-f.write(blogger_embed())
-f.close()
+        # Use videologTemplate
+        videolog_template_path = "videologTemplate.docx"
+        doc = DocxTemplate(videolog_template_path) 
+
+        doc.render(context)  
+        doc.save(videolog_path)
+
+        # Create the ZIP file
+        with zipfile.ZipFile(zip_filename, 'w') as zipf:
+            zipf.write(readon_path, os.path.basename(readon_path))
+            zipf.write(videolog_path, os.path.basename(videolog_path))
+
+    except Exception as e:
+        return f"Error generating files: {e}", None
+
+    return zip_filename, None
                     </code>
                     </pre>
                     <br>
