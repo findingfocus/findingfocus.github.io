@@ -42,7 +42,7 @@
         window.onerror = function(e,u,l) { Fail(e+'<br>('+u+':'+l+')'); };
         Module = { TOTAL_MEMORY: 1024*1024*24, TOTAL_STACK: 1024*1024*2, currentScriptUrl: '-', preInit: DoExecute };
         var s = document.createElement('script'), d = document.documentElement;
-        s.src = 'joustDemo.js';
+        s.src = '@lib/joustDemo.js';
         s.async = true;
         s.onerror = function(e) { d.removeChild(s); Msg(TXT.DLERROR); canvas.disabled = false; };
         d.appendChild(s);

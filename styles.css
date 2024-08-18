@@ -25,9 +25,8 @@ body {
 	background-color: rgba(0, 25, 100, 0.5);
 }
 
-
 .content {
-	background-color: rgba(0, 7, 30, .6);
+    background: rgba(0, 7, 30, 0.6);
 	color: #FFFFFF;
     text-align: left;
     font-size: 20px;
@@ -35,10 +34,49 @@ body {
     line-height: 1.5;
     min-height: 100vh;
     overflow: hidden;
- }
+    padding-bottom: 70px; /* Adjust this value to match the height of the bottom navbar */
+}
+
+.responsive-margin {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 15px;
+}
+
+
+.navbar-brand {
+    font-size: 1.2rem;
+}
+
+@media (max-width: 665px) {
+    .navbar-brand {
+        font-size: 1.1rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .responsive-margin {
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+
+}
+
+@media (min-width: 992px) {
+    .responsive-margin {
+        margin-left: 125px;
+        margin-right: 125px;
+    }
+    .responsive-padding {
+        padding-left: 125px;
+        padding-right: 125px;
+    }
+
+
+}
 
 .buttonFormatting {
-    text-align: left;
+    text-align: right;
     margin-left: 25px;
     margin-right: 10px;
     font-size: 16px;
@@ -46,26 +84,41 @@ body {
 }
 
 .header {
-    background-color: #A80D02;
+    /*background-color: #A80D02;*/
     color: #fff;
     text-align: center;
     padding: 0.75rem 0rem 0.05rem;
     padding-top: 10;
-    bottom: 0
+    bottom: 0;
+}
+
+.header-color {
+    background-color: rgba(0, 0, 25, 0.25);
 }
 
 .navbar .navbar-nav .nav-link {
-	text-align: left;
+	text-align: right;
 	line-height: 1;
     font-size: 1.1em;
     font-family: Arial;
     padding: 0.5em 0.8em;
-    transition: all 0.7s;
+    transition: all 1s;
+}
+
+.collapsing {
+    -webkit-transition: height .45s ease;
+    -o-transition: height .45s ease;
+    transition: height .45s ease;
+}
+
+.horizontal-line {
+    height: .2em;
+    background: linear-gradient(to top, #2b4f6e, #335b7f);
 }
 
 .navbar-toggler {
   border: none;
-  float: left;
+  float: right;
 }
 
 .navbar .navbar-nav .nav-link:hover {
@@ -73,21 +126,28 @@ body {
   color: #000000;
 }
 
+.brand-margin {
+    margin-left: 20px; /* Adjust the value as needed to move the button right */
+}
+
 
 @media only screen and (min-width: 992px) {
+  .hide-on-desktop {
+    display: none;
+ }
 
   .navbar {
     padding: 0;
   }
-  
+
   .navbar .navbar-nav .nav-link {
     padding: 1em 0.7em;
   }
- 
+
   .navbar .navbar-brand {
     padding: 0 0.8em;
   }
-  
+
 }
 
 .btn-success {
@@ -162,4 +222,68 @@ button, input[type="submit"] {
     text-align: center;
     transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     vertical-align: middle;
+}
+
+/*.navbar {*/
+/*    position: sticky;*/
+/*    top: 0;*/
+/*    z-index: 1000; !* Adjust as needed to ensure it stays above other content *!*/
+/*}*/
+
+@media (max-width: 767px) {
+    .navbar {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    .navbar-collapse {
+        justify-content: center;
+    }
+
+    .navbar-toggler {
+        position: absolute;
+        top: 8px;
+        right: 10px;
+    }
+}
+
+/* styles.css */
+.navbar-toggler:focus {
+    /*box-shadow: 0 0 0 1rem rgba(50, 90, 128, 0.25); !* Adjust the size to make the line thinner *!*/
+}
+
+/* styles.css */
+.fade-to-black {
+    position: relative;
+    background: linear-gradient(to bottom, rgba(0, 25, 100, 0.5) 80%, rgba(0, 0, 0, 1) 100%);
+    margin:0px;
+    padding:0px;
+}
+
+.image-button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the items horizontally */
+    margin-left: 1rem; /* Adjust as needed */
+    float: right;
+}
+
+#contact {
+    margin-bottom: 30px;
+}
+
+/* Remove underline from all hyperlinks */
+a {
+    text-decoration: none;
+}
+
+/* Ensure the .link class does not override the removal of the underline */
+a.link {
+    text-decoration: none;
+}
+
+.hover-border-highlight:hover {
+    border-color: #335b7f !important; /* Add !important to override other styles */
 }
