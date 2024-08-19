@@ -34,12 +34,18 @@ body {
     line-height: 1.5;
     min-height: 100vh;
     overflow: hidden;
-    padding-bottom: 70px; /* Adjust this value to match the height of the bottom navbar */
+    /*padding-bottom: 70px;*/
+}
+
+@media (max-width: 767px) {
+    .content {
+        padding-bottom: 60px;
+    }
 }
 
 .responsive-margin {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
     margin-top: 15px;
 }
 
@@ -84,7 +90,6 @@ body {
 }
 
 .header {
-    /*background-color: #A80D02;*/
     color: #fff;
     text-align: center;
     padding: 0.75rem 0rem 0.05rem;
@@ -127,7 +132,7 @@ body {
 }
 
 .brand-margin {
-    margin-left: 20px; /* Adjust the value as needed to move the button right */
+    margin-left: 20px;
 }
 
 
@@ -194,9 +199,11 @@ body {
     background-color: #3a6894 !important;
     border-color: #2e577d;
 }
-.video-margin {
-	margin-left: 40px;
-	margin-right: 40px;"
+@media (min-width: 768px) {
+    .video-margin {
+        margin-left: 50px;
+        margin-right: 50px;
+    }
 }
 
 
@@ -224,12 +231,6 @@ button, input[type="submit"] {
     vertical-align: middle;
 }
 
-/*.navbar {*/
-/*    position: sticky;*/
-/*    top: 0;*/
-/*    z-index: 1000; !* Adjust as needed to ensure it stays above other content *!*/
-/*}*/
-
 @media (max-width: 767px) {
     .navbar {
         position: fixed;
@@ -249,12 +250,6 @@ button, input[type="submit"] {
     }
 }
 
-/* styles.css */
-.navbar-toggler:focus {
-    /*box-shadow: 0 0 0 1rem rgba(50, 90, 128, 0.25); !* Adjust the size to make the line thinner *!*/
-}
-
-/* styles.css */
 .fade-to-black {
     position: relative;
     background: linear-gradient(to bottom, rgba(0, 25, 100, 0.5) 80%, rgba(0, 0, 0, 1) 100%);
@@ -265,25 +260,65 @@ button, input[type="submit"] {
 .image-button-container {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center the items horizontally */
-    margin-left: 1rem; /* Adjust as needed */
+    align-items: center;
+    margin-left: 1rem;
     float: right;
 }
 
-#contact {
-    margin-bottom: 30px;
-}
+/*#contact {*/
+/*    margin-bottom: 30px;*/
+/*}*/
 
-/* Remove underline from all hyperlinks */
 a {
     text-decoration: none;
 }
 
-/* Ensure the .link class does not override the removal of the underline */
 a.link {
     text-decoration: none;
 }
 
 .hover-border-highlight:hover {
-    border-color: #335b7f !important; /* Add !important to override other styles */
+    border-color: #335b7f !important;
+}
+
+.icon-size {
+    width: 16px;
+}
+
+.icon-adjust {
+    transform: translate(2px, -2px);
+}
+
+.source-code-adjust {
+    margin-top: 1.5rem;
+    transform: translateX(-5px);
+    margin-bottom: 2.8rem;
+}
+
+.executables-adjust {
+    margin-top:1.5rem;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 400px; /* Adjust as needed */}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.video-container video {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 }

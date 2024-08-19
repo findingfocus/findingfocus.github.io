@@ -1,7 +1,7 @@
 (function(){
   let TXT =
     {
-      PLAYBTN: 'Click here to play WEATHER',
+      PLAYBTN: 'Click to play Weather',
       LOAD:    'Downloading Game',
       EXECUTE: 'Starting Game',
       DLERROR: 'Error while downloading game data.\nCheck your internet connection.',
@@ -12,7 +12,7 @@
   let Msg = function(m)
   {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = '#888';
+    ctx.fillStyle = '#BBB';
     for (let i = 0, a = m.split('\n'), n = a.length; i != n; i++)
       ctx.fillText(a[i], canvas.width/2, canvas.height/2-(n-1)*20+10+i*40);
   };
@@ -60,11 +60,11 @@
       canvas.scrollIntoView();
       DoLoad();
     };
-    ctx.fillStyle = '#888';
+    ctx.fillStyle = '#BBB';
     ctx.fillRect(canvas.width/2-254, canvas.height/2-104, 508, 208);
-    ctx.fillStyle = '#333';
+    ctx.fillStyle = '#025';
     ctx.fillRect(canvas.width/2-250, canvas.height/2-100, 500, 200);
-    ctx.fillStyle = '#888';
+    ctx.fillStyle = '#BBB';
     ctx.fillText(TXT.PLAYBTN, canvas.width/2, canvas.height/2+10);
   };
 
