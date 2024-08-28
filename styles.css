@@ -155,7 +155,6 @@ body {
 
 .btn-success {
     background-color: #43A047 !important;
-    margin-left: 10px !important;
     border-color: #48b04d;
     transition: all 0.5s;
 }
@@ -258,6 +257,7 @@ button, input[type="submit"] {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     margin-left: 1rem;
     float: right;
 }
